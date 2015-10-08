@@ -89,6 +89,16 @@ gulp.task('clean:pdf', function(done) {
   del('pdf/' + pkg.name + '.pdf', done);
 });
 
+gulp.task('clean:fonts', function(done) {
+  del('dist/fonts', done);
+});
+
+gulp.task('font-awesome', ['clean:fonts'], function() {
+  return gulp.src('./bower_components/font-awesome/fonts/*')
+  .pipe(gulp.dest('dist/fonts'))
+  .pipe(connect.reload());
+});
+
 gulp.task('connect', ['build'], function() {
   connect.server({
     root: 'dist',
@@ -118,7 +128,7 @@ gulp.task('deploy', ['build'], function(done) {
   ghpages.publish(path.join(__dirname, 'dist'), { logger: gutil.log }, done);
 });
 
-gulp.task('build', ['js', 'html', 'css', 'images']);
+gulp.task('build', ['js', 'html', 'css', 'images', 'font-awesome']);
 
 gulp.task('serve', ['open', 'watch']);
 
