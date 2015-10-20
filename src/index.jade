@@ -18,6 +18,18 @@ html
         h2 by&nbsp;
           a(href="http://twitter.com/matteocollina") @matteocollina
 
+      section
+        h2 Back to School
+        img(src="images/student.svg")
+
+      section
+        h2 Back to School
+        img(src="images/emails.svg")
+
+      section
+        h2 Back to School
+        img(src="images/persons.svg")
+
       section(data-bespoke-backdrop='objects').trans
         h2(style="color: white") What is an Object?
 
@@ -25,13 +37,110 @@ html
         h2 Objects provides
         ul
           li Encapsulation
-          li Accessor
+          li Accessors
           li Abstraction
           li Inheritance
           li Polymorphism
 
       section
+        h2 Objects provides Encapsulation
+        pre
+          code.language-javascript.
+            function myFunc (obj) {
+              return function () {
+                return obj.doSomethig()
+              }
+            }
+
+      section
+        h2 Objects provides Accessors
+        img(src="images/getters-setters.jpg" style="height: 100%")
+        ul.bullet
+          li Do we really need them?
+
+      section
+        h2 Objects provides Accessors
+        pre
+          code.language-javascript.
+            class Person {
+              constructor (name) { this._name = name }
+              get name () { return this._name }
+              set name (val) { this._name = val }
+            }
+
+      section
+        h2 Are Accessor useful?
+        ul.bullet
+          li to execute code and compute a variable
+          li but not for JSONificable content
+
+      section(data-bespoke-backdrop='objects').trans
+        h2(style="color: white") Objects are GOOD
+
+      section
         img(src="images/classes.gif" style="width: 100%")
+
+      section
+        h2 Are classes good?
+        ul.bullet
+          li Yes, they encapsulates behavior
+
+      section
+        h2 Are models good?
+        pre
+          code.language-javascript.
+            class Person {
+              save (cb) {
+                db.save(cb)
+              }
+            }
+
+      section
+        h2 Are fat models good?
+        ul.bullet
+          li is it a behavior of a model to save itself?
+          li is it good to encapsulate a database connection in a model?
+          li how can we distribute model access?
+
+      section
+        h2 Solution: Let's encapsulate the model!
+        ul.bullet
+          li Java Remote Method Invocation
+          li CORBA
+          li REST?
+
+      section
+        h2 Solution: Build internal APIs!
+        ul.bullet
+          li APIs as a form of communication between teams!
+          li GOOD APIs!
+          li APIs for the sake of ditributing!
+          li BAD APIs!
+
+      section
+        h2 ...but I only wanted to access my data!
+        ul.bullet
+          li no code is better than any code
+          li code for the sake of code is technical debt
+          li is there something wrong?
+
+      section
+        a(href="https://vimeo.com/108441214")
+          img(src="images/destroying-code.png" style="width: 100%")
+
+      section
+        p
+          i.fa.fa-quote-left &nbsp;
+          | Writing code for the sole purpose of deleting it&nbsp;
+          i.fa.fa-quote-right &nbsp;
+          | - Greg Young
+
+      section
+        p
+          i.fa.fa-quote-left &nbsp;
+          | All code is sh*t &nbsp;
+          i.fa.fa-quote-right &nbsp;
+          | - Matteo Collina
 
       section
         img(src="images/poop.png" style="height: 100%")
@@ -39,6 +148,9 @@ html
           | by Mayene de La Cruz&nbsp;
           a(href="http://creativecommons.org/licenses/by/3.0/deed.en_US")
             img(src="images/cc_attribution.png")
+
+      section
+        h2 What if we design messages, and not models?
 
       section(data-bespoke-backdrop='kay').transwhite
         br
@@ -57,18 +169,98 @@ html
             img(src="images/cc_attribution.png")
 
       section
-        h2 HERE GOES sequence diagram
+        img(src="images/sequence-diagram.svg" style="height: 100%")
 
       section
-        a(href="https://vimeo.com/108441214")
-          img(src="images/destroying-code.png" style="width: 100%")
+        h2 What is a message?
+        ul.bullet
+          li Maps
+          li Arrays
+          li Strings
+          li Numbers
+          li Binary data?
+          li Streams of data?
 
       section
-        p
-          i.fa.fa-quote-left &nbsp;
-          | Writing code for the sole purpose of deleting it&nbsp;
-          i.fa.fa-quote-right &nbsp;
-          | - Greg Young
+        h2 The anatomy of a message
+        pre
+          code.language-javascript.
+            {
+              person:  {
+                name: 'Matteo'
+                surname: 'Collina'
+              }
+            }
 
+      section
+        h2 The anatomy of a recipient
+        pre
+          code.language-javascript.
+            recipient(message, function (err, result) {
+              console.log(err, result)
+            })
+
+        ul.bullet
+          li result is another message
+
+      section
+        h2 Node Callback Style
+        <iframe width="560" height="315" src="https://www.youtube.com/embed/9bZkp7q19f0" frameborder="0" allowfullscreen></iframe>
+
+      section
+        h2 Node Callback Style
+
+        pre
+          code.language-javascript.
+            function myFunc(err, arg1, arg2, ...) {
+              // this is called asynchronously
+              // err contains an Error object
+            }
+
+      section
+        h2 How to remote a function call?
+        ul.bullet
+          li how do we encode which function to call?
+          li truly multi transport from day zero
+          li we can store it in the message!
+
+      section
+        h2 Final message
+        pre
+          code.language-javascript.
+            {
+              role: 'person',
+              cmd: 'save'
+              person:  {
+                name: 'Matteo'
+                surname: 'Collina'
+              }
+            }
+
+      section
+        h2 Command pattern!
+        h3 IMAGE HERE
+
+      section
+        h2 Command Pattern!
+        ul.bullet
+          li we do not want a massive switch/case
+          li ifs are not good either
+
+      section
+        h2 Pattern Matching!
+        // bloomrun live code example!
+
+      section
+        a(href="http://nearform.com" style="width: 20%")
+          img(src="./images/nearform.svg")
+        br
+        h3 We call such a way of composing code a
+        h2 Microservice
+
+      section
+        a(href="http://senecajs.org" style="width: 20%")
+          img(src="./images/seneca.svg")
+        h2 Seneca!
 
     script(src='build/build.js')
