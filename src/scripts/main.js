@@ -8,13 +8,16 @@ var bespoke = require('bespoke'),
   backdrop = require('bespoke-backdrop'),
   scale = require('bespoke-scale'),
   hash = require('bespoke-hash'),
-  progress = require('bespoke-progress');
+  progress = require('bespoke-progress'),
+  run = require('bespoke-run'),
+  bloomrun = require('bloomrun');
 
 // Bespoke.js
 bespoke.from('article', [
   classes(),
   keys(),
   touch(),
+  run(),
   pdf(),
   bullets('li, .bullet'),
   backdrop(),
@@ -28,3 +31,4 @@ bespoke.from('article', [
 // debowerify: https://github.com/eugeneware/debowerify
 require('prism');
 
+global.bloomrun = bloomrun;

@@ -1,7 +1,10 @@
 {
   "name": "presentation-we-are-not-object-oriented-anymore",
   "version": "0.0.0",
-  "dependencies": {},
+  "dependencies": {
+    "bespoke-run": "^1.0.1",
+    "bloomrun": "^0.4.0"
+  },
   "devDependencies": {
     "bespoke": "^1.0.0",
     "bespoke-backdrop": "^1.0.0",

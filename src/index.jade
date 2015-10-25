@@ -205,17 +205,26 @@ html
 
       section
         h2 Node Callback Style
-        <iframe width="560" height="315" src="https://www.youtube.com/embed/9bZkp7q19f0" frameborder="0" allowfullscreen></iframe>
+        iframe(width="560" height="315" src="https://www.youtube.com/embed/9bZkp7q19f0" frameborder="0" allowfullscreen)
 
       section
         h2 Node Callback Style
 
         pre
           code.language-javascript.
-            function myFunc(err, arg1, arg2, ...) {
-              // this is called asynchronously
-              // err contains an Error object
-            }
+            func(msg, function myFunc(err, arg1, arg2, ...) {
+              /*
+              this is called asynchronously
+              err contains an Error object
+              */
+            })
+
+      section
+        h2 Node Callback Style
+        ul.bullet
+          li async by default
+          li no difference if wrapping a db, or a remote endpoint
+          li Promises are ok as well :)
 
       section
         h2 How to remote a function call?
@@ -239,7 +248,7 @@ html
 
       section
         h2 Command pattern!
-        h3 IMAGE HERE
+        img(src="./images/command-pattern.svg" style="width: 80%")
 
       section
         h2 Command Pattern!
@@ -248,8 +257,23 @@ html
           li ifs are not good either
 
       section
+        a(href="http://github.com/mcollina/bloomrun")
+          img(src="./images/bloomrun.svg" style="width: 80%")
+
+      section
         h2 Pattern Matching!
-        // bloomrun live code example!
+        pre
+          code(data-bespoke-autorun).language-javascript.
+            var i = bloomrun()
+            i.add({ cmd: 'save' }, function save (arg, cb) {
+              alert('saving ' + JSON.stringify(arg))
+              cb(null, true) })
+
+            var msg = {
+              cmd: 'save',
+              person: { name: 'matteo' } }
+            i.lookup(msg)(msg, function (err, result) {
+              alert([err, result].join(' ')) })
 
       section
         a(href="http://nearform.com" style="width: 20%")
@@ -259,8 +283,72 @@ html
         h2 Microservice
 
       section
-        a(href="http://senecajs.org" style="width: 20%")
+        a(href="http://senecajs.org" style="width: 100%")
           img(src="./images/seneca.svg")
-        h2 Seneca!
+        h3 
+          a(href="http://senecajs.org" style="width: 100%").
+            http://senecajs.org
+
+      section
+        img(src="./images/seneca.svg" style="width: 20%")
+        pre
+          code.language-javascript.
+            var seneca = require('seneca')()
+            seneca.add({
+              role:'user',
+              cmd:'login'
+            }, function (args, callback) {
+              var loggedIn = args.username === 'matteo' &&
+                             args.password === 'collina'
+              callback(null, { loggedIn:loggedIn })
+            })
+            seneca.listen()
+
+      section
+        img(src="./images/seneca.svg" style="width: 20%")
+        pre
+          code.language-javascript.
+            var seneca = require('seneca')()
+            var client = seneca.client()
+
+            client.act({
+              role:'user',
+              cmd:'login',
+              username: 'matteo',
+              password: 'collina'
+            }, function (err, result) {
+              console.log(result.loggedIn)
+            })
+
+      section
+        h3
+          img(src="./images/seneca.svg" style="width: 20%; margin-top 30%;")
+          br
+          | Features
+        ul.bullet
+          li multiple transports, from bare TCP to busses
+          li build a monolith, and then split it away
+          li deep inspection & debugging tools
+          li authentication/user managament system
+          li control panel
+          li integration with HAPI
+
+      section
+        img(src="./images/seneca.svg" style="width: 20%")
+        h2 DEMO!
+
+      section.full-imgs
+        img(src='images/me.png')
+        h3
+          a(href='http://github.com/mcollina') http://github.com/mcollina
+
+      section
+        h1 Thanks!
+        br
+        p If you need help with Node.js
+        br
+        h3 <a href="mailto:matteo.collina@nearform.com">matteo.collina@nearform.com</a>
+        h3 <a href="http://twitter.com/matteocollina">@matteocollina</a> on Twitter
+        h3 <a href="http://www.nearform.com">www.nearform.com</a>
 
     script(src='build/build.js')
