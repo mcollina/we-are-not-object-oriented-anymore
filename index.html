@@ -1,0 +1,326 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <title>We are not Object Oriented anymore</title>
+    <link rel="stylesheet" type="text/css" href="build/build.css">
+  </head>
+  <body>
+    <article>
+      <section><a href="http://nearform.com" style="width: 20%"><img src="./images/nearform.svg"></a>
+        <h1>We are not Object Oriented anymore</h1>
+        <h2>by&nbsp;<a href="http://twitter.com/matteocollina">@matteocollina</a></h2>
+      </section>
+      <section>
+        <h2>Back to School</h2><img src="images/student.svg">
+      </section>
+      <section>
+        <h2>Back to School</h2><img src="images/emails.svg">
+      </section>
+      <section>
+        <h2>Back to School</h2><img src="images/persons.svg">
+      </section>
+      <section data-bespoke-backdrop="objects" class="trans">
+        <h2 style="color: white">What is an Object?</h2>
+      </section>
+      <section>
+        <h2>Objects provides</h2>
+        <ul class="bullet">
+          <li>Encapsulation</li>
+          <li>Accessors</li>
+          <li>Abstraction</li>
+          <li>Inheritance</li>
+          <li>Polymorphism</li>
+        </ul>
+      </section>
+      <section>
+        <h2>Objects provides Encapsulation</h2>
+        <pre><code class="language-javascript">function myFunc (obj) {
+  return function () {
+    return obj.doSomethig()
+  }
+}
+</code></pre>
+      </section>
+      <section>
+        <h2>Objects provides Accessors</h2><img src="images/getters-setters.jpg" style="height: 100%">
+        <ul class="bullet">
+          <li>Do we really need them?</li>
+        </ul>
+      </section>
+      <section>
+        <h2>Objects provides Accessors</h2>
+        <pre><code class="language-javascript">class Person {
+  constructor (name) { this._name = name }
+  get name () { return this._name }
+  set name (val) { this._name = val }
+}
+</code></pre>
+      </section>
+      <section>
+        <h2>Are Accessor useful?</h2>
+        <ul class="bullet">
+          <li>to execute code and compute a variable</li>
+          <li>but not for JSONificable content</li>
+        </ul>
+      </section>
+      <section>
+        <h2>Objects provides Inheritance</h2>
+        <pre><code class="language-javascript">class Person { }
+class Student extends Person {}
+</code></pre>
+      </section>
+      <section>
+        <h2>Objects provides Inheritance</h2>
+        <ul class="bullet">
+          <li>is inheritance needed?</li>
+          <li>is inheritance easily remotable?</li>
+          <li>is inheritance good for domain data?</li>
+          <li>is inheritance good for frameworks?</li>
+        </ul>
+      </section>
+      <section data-bespoke-backdrop="objects" class="trans">
+        <h2 style="color: white">Objects are GOOD</h2>
+      </section>
+      <section><img src="images/classes.gif" style="width: 100%"></section>
+      <section>
+        <h2>Are classes good?</h2>
+        <ul class="bullet">
+          <li>Yes, they encapsulates behavior</li>
+        </ul>
+      </section>
+      <section>
+        <h2>Are models good?</h2>
+        <pre><code class="language-javascript">class Person {
+  save (cb) {
+    db.save(cb)
+  }
+}
+</code></pre>
+      </section>
+      <section>
+        <h2>Are fat models good?</h2>
+        <ul class="bullet">
+          <li>is it a behavior of a model to save itself?</li>
+          <li>is it good to encapsulate a database connection in a model?</li>
+          <li>how can we distribute model access?</li>
+        </ul>
+      </section>
+      <section>
+        <h2>Solution: Let's encapsulate the model!</h2>
+        <ul class="bullet">
+          <li>Java Remote Method Invocation</li>
+          <li>CORBA</li>
+          <li>REST?</li>
+        </ul>
+      </section>
+      <section>
+        <h2>Solution: Build internal APIs!</h2>
+        <ul class="bullet">
+          <li>APIs as a form of communication between teams!</li>
+          <li>GOOD APIs!</li>
+          <li>APIs for the sake of ditributing!</li>
+          <li>BAD APIs!</li>
+        </ul>
+      </section>
+      <section>
+        <h2>...but I only wanted to access my data!</h2>
+        <ul class="bullet">
+          <li>no code is better than any code</li>
+          <li>code for the sake of code is technical debt</li>
+          <li>is there something wrong?</li>
+        </ul>
+      </section>
+      <section><a href="https://vimeo.com/108441214"><img src="images/destroying-code.png" style="width: 100%"></a></section>
+      <section>
+        <p><i class="fa fa-quote-left">&nbsp;</i>Writing code for the sole purpose of deleting it&nbsp;<i class="fa fa-quote-right">&nbsp;</i>- Greg Young</p>
+      </section>
+      <section>
+        <p><i class="fa fa-quote-left">&nbsp;</i>All code is sh*t &nbsp;<i class="fa fa-quote-right">&nbsp;</i>- Matteo Collina</p>
+      </section>
+      <section><img src="images/poop.png" style="height: 100%">
+        <div class="copyright">by Mayene de La Cruz&nbsp;<a href="http://creativecommons.org/licenses/by/3.0/deed.en_US"><img src="images/cc_attribution.png"></a></div>
+      </section>
+      <section>
+        <h2>What if we design messages, and not models?</h2>
+      </section>
+      <section data-bespoke-backdrop="kay" class="transwhite"><br><br><br>
+        <p><i class="fa fa-quote-left">&nbsp;</i>The key in making great and growable systems is much more
+          to design how its modules communicate rather than what
+          their internal properties and behaviors should be.<i class="fa fa-quote-right">&nbsp;</i>- Alan Key, father of OOP
+        </p>
+        <div class="copyright">Image by Marcin Wichary&nbsp;<a href="http://creativecommons.org/licenses/by/3.0/deed.en_US"><img src="images/cc_attribution.png"></a></div>
+      </section>
+      <section><img src="images/sequence-diagram.svg" style="height: 100%"></section>
+      <section>
+        <h2>What is a message?</h2>
+        <ul class="bullet">
+          <li>Maps</li>
+          <li>Arrays</li>
+          <li>Strings</li>
+          <li>Numbers</li>
+          <li>Binary data?</li>
+          <li>Streams of data?</li>
+        </ul>
+      </section>
+      <section>
+        <h2>The anatomy of a message</h2>
+        <pre><code class="language-javascript">{
+  person:  {
+    name: 'Matteo'
+    surname: 'Collina'
+  }
+}
+</code></pre>
+      </section>
+      <section>
+        <h2>The anatomy of a recipient</h2>
+        <pre><code class="language-javascript">recipient(message, function (err, result) {
+  console.log(err, result)
+})
+</code></pre>
+        <ul class="bullet">
+          <li>result is another message</li>
+        </ul>
+      </section>
+      <section>
+        <h2>Node Callback Style</h2>
+        <iframe width="560" height="315" src="https://www.youtube.com/embed/9bZkp7q19f0" frameborder="0" allowfullscreen></iframe>
+      </section>
+      <section>
+        <h2>Node Callback Style</h2>
+        <pre><code class="language-javascript">func(msg, function myFunc(err, arg1, arg2, ...) {
+  /*
+  this is called asynchronously
+  err contains an Error object
+  */
+})
+</code></pre>
+      </section>
+      <section>
+        <h2>Node Callback Style</h2>
+        <ul class="bullet">
+          <li>async by default</li>
+          <li>no difference if wrapping a db, or a remote endpoint</li>
+          <li>Promises are ok as well :)</li>
+        </ul>
+      </section>
+      <section>
+        <h2>How to remote a function call?</h2>
+        <ul class="bullet">
+          <li>how do we encode which function to call?</li>
+          <li>truly multi transport from day zero</li>
+          <li>we can store it in the message!</li>
+        </ul>
+      </section>
+      <section>
+        <h2>Final message</h2>
+        <pre><code class="language-javascript">{
+  role: 'person',
+  cmd: 'save'
+  person:  {
+    name: 'Matteo'
+    surname: 'Collina'
+  }
+}
+</code></pre>
+      </section>
+      <section>
+        <h2>Command pattern!</h2><img src="./images/command-pattern.svg" style="width: 80%">
+      </section>
+      <section>
+        <h2>Command Pattern!</h2>
+        <ul class="bullet">
+          <li>we do not want a massive switch/case</li>
+          <li>ifs are not good either</li>
+        </ul>
+      </section>
+      <section><a href="http://github.com/mcollina/bloomrun"><img src="./images/bloomrun.svg" style="width: 80%"></a></section>
+      <section>
+        <h2>Pattern Matching!</h2>
+        <pre><code data-bespoke-autorun class="language-javascript">var i = bloomrun()
+i.add({ cmd: 'save' }, function save (arg, cb) {
+  alert('saving ' + JSON.stringify(arg))
+  cb(null, true) })
+  
+var msg = {
+  cmd: 'save',
+  person: { name: 'matteo' } }
+i.lookup(msg)(msg, function (err, result) {
+  alert([err, result].join(' ')) })
+  </code></pre>
+      </section>
+      <section><a href="http://nearform.com" style="width: 20%"><img src="./images/nearform.svg"></a><br>
+        <h3>We call such a way of composing code a</h3>
+        <h2>Microservice</h2>
+      </section>
+      <section><a href="http://senecajs.org" style="width: 100%"><img src="./images/seneca.svg"></a>
+        <h3><a href="http://senecajs.org" style="width: 100%">
+            http://senecajs.org
+            </a></h3>
+      </section>
+      <section><img src="./images/seneca.svg" style="width: 20%">
+        <pre><code class="language-javascript">var seneca = require('seneca')()
+seneca.add({
+  role:'user',
+  cmd:'login'
+}, function (args, callback) {
+  var loggedIn = args.username === 'matteo' &&
+                 args.password === 'collina'
+  callback(null, { loggedIn:loggedIn })
+})
+seneca.listen()
+</code></pre>
+      </section>
+      <section><img src="./images/seneca.svg" style="width: 20%">
+        <pre><code class="language-javascript">var seneca = require('seneca')()
+var client = seneca.client()
+
+client.act({
+  role:'user',
+  cmd:'login',
+  username: 'matteo',
+  password: 'collina'
+}, function (err, result) {
+  console.log(result.loggedIn)
+})
+</code></pre>
+      </section>
+      <section>
+        <h3><img src="./images/seneca.svg" style="width: 20%; margin-top 30%;"><br>Features</h3>
+        <ul class="bullet">
+          <li>multiple transports, from bare TCP to busses</li>
+          <li>build a monolith, and then split it away</li>
+          <li>deep inspection & debugging tools</li>
+          <li>authentication/user managament system</li>
+          <li>control panel</li>
+          <li>integration with HAPI</li>
+        </ul>
+      </section>
+      <section><img src="./images/seneca.svg" style="width: 20%">
+        <h2>DEMO!</h2>
+      </section>
+      <section><img src="./images/seneca.svg" style="width: 20%">
+        <h2>This presentation</h2>
+        <ul>
+          <li><a href="https://github.com/mcollina/we-are-not-object-oriented-anymore">https://github.com/mcollina/we-are-not-object-oriented-anymore</a></li>
+          <li><a href="https://github.com/mcollina/we-are-not-object-oriented-anymore">
+              https://github.com/mcollina/we-are-not-object-oriented-anymore
+              </a></li>
+        </ul>
+      </section>
+      <section class="full-imgs"><img src="images/me.png">
+        <h3><a href="http://github.com/mcollina">http://github.com/mcollina</a></h3>
+      </section>
+      <section>
+        <h1>Thanks!</h1><br>
+        <p>If you need help with Node.js</p><br>
+        <h3><a href="mailto:matteo.collina@nearform.com">matteo.collina@nearform.com</a></h3>
+        <h3><a href="http://twitter.com/matteocollina">@matteocollina</a> on Twitter</h3>
+        <h3><a href="http://www.nearform.com">www.nearform.com</a></h3>
+      </section>
+    </article>
+    <script src="build/build.js"></script>
+  </body>
+</html>
